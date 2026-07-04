@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Мій Мега Плеєр</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #121212; color: white; padding: 40px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        h1 { color: #1DB954; text-align: center; } /* Зелений колір Spotify */
+        .track-card { background-color: #181818; padding: 20px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #282828; }
+        .track-title { margin: 0 0 10px 0; font-size: 1.2em; }
+        .track-author { color: #b3b3b3; margin: 0 0 15px 0; }
+        audio { width: 100%; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎵 Мій Перший Мега Плеєр</h1>
+
+        {% if tracks %}
+            {% for track in tracks %}
+                <div class="track-card">
+                    <h3 class="track-title">{{ track.title }}</h3>
+                    <p class="track-author">Виконавець: {{ track.author }}</p>
+
+                    <audio controls>
+                        <source src="{{ track.audio_file.url }}" type="audio/mpeg">
+                        Ваш браузер не підтримує програвання аудіо.
+                    </audio>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="text-align: center; color: #b3b3b3;">Музики поки немає. Додайте її через адмінку!</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
